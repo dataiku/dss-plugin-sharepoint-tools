@@ -1,0 +1,20 @@
+{
+    "id": "write-sharepoint-list",
+    "meta": {
+        "icon": "icon-cloud",
+        "label": "NEW !! Write to a SharePoint Online list"
+    },
+    
+    "params" : [
+        {
+            "name": "sharepoint_connection",
+            "label": "SharePoint connection",
+            "type": "CONNECTION"
+        },
+        {
+            "name": "sharepoint_url",
+            "label": "SharePoint URL",
+            "type": "STRING"
+        }
+    ]
+}
