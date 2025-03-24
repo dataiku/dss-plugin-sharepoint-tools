@@ -16,13 +16,13 @@ class WriteToSharePointListTool(BaseAgentTool):
         connection = client.get_connection(connection_name)
         connection_info = connection.get_info()
         credentials = connection_info.get_oauth2_credential()
-        self.sharepoint_access_token = credentials.get("accessToken")
-        self.sharepoint_url = config.get("sharepoint_url")
+        sharepoint_access_token = credentials.get("accessToken")
+        sharepoint_url = config.get("sharepoint_url")
 
-        self.session = Office365Session(access_token=self.sharepoint_access_token)
-        self.site_id, self.list_id = self.session.extract_site_list_from_url(self.sharepoint_url)
-        site = self.session.get_site(self.site_id)
-        self.list = site.get_list(self.list_id)
+        session = Office365Session(access_token=sharepoint_access_token)
+        site_id, list_id = session.extract_site_list_from_url(sharepoint_url)
+        site = session.get_site(site_id)
+        self.list = site.get_list(list_id)
         self.output_schema = None
 
     def get_descriptor(self, tool):
