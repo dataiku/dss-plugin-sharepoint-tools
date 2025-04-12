@@ -2,7 +2,7 @@
     "id": "write-sharepoint-list",
     "meta": {
         "icon": "icon-cloud",
-        "label": "NEW !! Write to a SharePoint Online list"
+        "label": "Create a SharePoint Online list item"
     },
     
     "params" : [

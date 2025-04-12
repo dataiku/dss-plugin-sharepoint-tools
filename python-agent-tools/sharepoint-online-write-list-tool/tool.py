@@ -1,15 +1,15 @@
 import dataiku
 from dataiku.llm.agent_tools import BaseAgentTool
-from safe_logger import SafeLogger
+#from safe_logger import SafeLogger
 from office365_client import Office365Session, Office365ListWriter
 
-logger = SafeLogger("sharepoint-tool plugin")
+#logger = SafeLogger("sharepoint-tool plugin")
 
 
 class WriteToSharePointListTool(BaseAgentTool):
 
     def set_config(self, config, plugin_config):
-        logger.info('SharePoint Online plugin list write tool v{}'.format("0.0.1"))
+        #logger.info('SharePoint Online plugin list write tool v{}'.format("0.0.1"))
 
         connection_name = config.get("sharepoint_connection")
         client = dataiku.api_client()
@@ -45,7 +45,7 @@ class WriteToSharePointListTool(BaseAgentTool):
         self.output_schema = {
             "columns": output_columns
         }
-        logger.info("Properties detected on this list: {}".format(properties))
+        #logger.info("Properties detected on this list: {}".format(properties))
         return {
             "description": "This tool can be used to access lists on SharePoint Online. The input to this tool is a dictionary containing the new issue summary and description, e.g. '{'summary':'new issue summary', 'description':'new issue description'}'",
             "inputSchema": {
