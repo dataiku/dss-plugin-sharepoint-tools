@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "meta": {
         "label": "Sharepoint tools",
-        "description": "",
+        "description": "Collection of agent tools for SharePoint Online",
         "author": "Dataiku (Alex Bourret)",
         "icon": "icon-cloud",
         "tags": [],
