@@ -1,11 +1,11 @@
 {
     "id": "sharepoint-tools",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "meta": {
-        "label": "Sharepoint tools",
+        "label": "Sharepoint Tools",
         "description": "Collection of agent tools for SharePoint Online",
         "author": "Dataiku (Alex Bourret)",
-        "icon": "icon-cloud",
+        "icon": "dku-icon-microsoft-sharepoint-48",
         "tags": [],
         "url": "",
         "licenseInfo": "Apache Software License"
