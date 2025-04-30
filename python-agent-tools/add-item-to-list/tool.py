@@ -63,9 +63,21 @@ class WriteToSharePointListTool(BaseAgentTool):
             write_from_dict=True
         )
         row = input.get("input", {})
+
+        # Log inputs and config to trace
+        trace.span["name"] = "WRITE_TO_SHAREPOINT_LIST_TOOL_CALL"
+        trace.inputs["list"] = self.list
+        trace.inputs["row"] = row
+        trace.attributes["config"] = self.config
+
         sharepoint_writer.write_row(row)
         sharepoint_writer.close()
 
+        output_text = 'The record was added on the "{}" SharePoint list'.format(self.list)
+
+        # Log outputs to trace
+        trace.outputs["output"] = output_text
+
         return {
-            "output": 'The record was added on the "{}" SharePoint list'.format(self.list)
+            "output": output_text
         }
