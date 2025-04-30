@@ -15,6 +15,7 @@ class WriteToSharePointListTool(BaseAgentTool):
         client = dataiku.api_client()
         connection = client.get_connection(connection_name)
         connection_info = connection.get_info()
+        # could assert 'type': 'SharePointOnline'
         credentials = connection_info.get_oauth2_credential()
         sharepoint_access_token = credentials.get("accessToken")
         sharepoint_url = config.get("sharepoint_url")
