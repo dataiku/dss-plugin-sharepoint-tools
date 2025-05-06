@@ -5,7 +5,7 @@
         "label": "Sharepoint Tools",
         "description": "Collection of agent tools for SharePoint Online",
         "author": "Dataiku (Alex Bourret)",
-        "icon": "dku-icon-microsoft-sharepoint-48",
+        "icon": "icon-microsoft-sharepoint",
         "tags": [],
         "url": "",
         "licenseInfo": "Apache Software License"
