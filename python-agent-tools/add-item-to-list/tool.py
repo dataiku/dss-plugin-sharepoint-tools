@@ -11,6 +11,7 @@ class WriteToSharePointListTool(BaseAgentTool):
     def set_config(self, config, plugin_config):
         logger.info('SharePoint Online plugin list write tool v{}'.format("0.0.1"))
 
+        self.config = config
         connection_name = config.get("sharepoint_connection")
         client = dataiku.api_client()
         connection = client.get_connection(connection_name)
