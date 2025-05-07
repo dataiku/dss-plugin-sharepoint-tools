@@ -253,7 +253,7 @@ class Office365Session():
             site_counter += 1
         logger.info("searched through {} sites, id found is '{}'".format(site_counter, site_id))
         if not site_id:
-            raise Exception("The site '{}' was not found. Check the URL or your credentials.".format(site_name))
+            return None, None
         site = self.get_site(site_id)
         list_id = None
         logger.info("searching for list '{}'".format(list_name))
@@ -263,8 +263,6 @@ class Office365Session():
                 list_id = sharepoint_list.get("id")
             list_counter += 1
         logger.info("searched through {} lists, id found is '{}'".format(list_counter, list_id))
-        if not list_id:
-            raise Exception("The list '{}' was not found. Check the URL or your credentials.".format(list_name))
         return site_id, list_id
 
     def search_list(self, query):

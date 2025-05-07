@@ -23,9 +23,21 @@ class WriteToSharePointListTool(BaseAgentTool):
 
         session = Office365Session(access_token=sharepoint_access_token)
         site_id, self.list_id = session.extract_site_list_from_url(sharepoint_url)
+        self.properties = {}
+        self.output_schema = None
+        self.initialization_error = None
+        if not site_id:
+            self.initialization_error = "The site in '{}' does not exists or is not accessible. Please check your credentials".format(
+                sharepoint_url
+            )
+            return
+        if not self.list_id:
+            self.initialization_error = "The list in '{}' does not exists or is not accessible. Please check your credentials".format(
+                sharepoint_url
+            )
+            return
         site = session.get_site(site_id)
         self.list = site.get_list(self.list_id)
-        self.output_schema = None
         self.output_schema, self.properties = self._get_schema_and_properties()
 
     def _get_schema_and_properties(self):
@@ -64,6 +76,10 @@ class WriteToSharePointListTool(BaseAgentTool):
 
     def invoke(self, input, trace):
         logger.info("Invoke with schema {}".format(self.output_schema))
+        if self.output_schema is None:
+            return {
+                "error": "{}".format(self.initialization_error)
+            }
         sharepoint_writer = Office365ListWriter(
             self.list,
             self.output_schema,
