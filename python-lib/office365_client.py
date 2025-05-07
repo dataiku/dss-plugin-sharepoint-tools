@@ -240,18 +240,27 @@ class Office365Session():
         )
 
     def extract_site_list_from_url(self, url):
+        logger.info("searching site from url {}".format(url))
         url_tokens = url.strip("/").split("/")
         list_name = url_tokens[-2:-1][0]
         site_name = url_tokens[-4:-3][0]
         site_id = None
+        logger.info("searching for site '{}'".format(site_name))
+        site_counter = 0
         for site in self.get_next_site():
             if site.get("name") == site_name:
                 site_id = site.get("id")
+            site_counter += 1
+        logger.info("searched through {} sites, id found is '{}'".format(site_counter, site_id))
         site = self.get_site(site_id)
         list_id = None
+        logger.info("searching for list '{}'".format(list_name))
+        list_counter = 0
         for sharepoint_list in site.get_next_list():
             if sharepoint_list.get("name") == list_name:
                 list_id = sharepoint_list.get("id")
+            list_counter += 1
+        logger.info("searched through {} lists, id found is '{}'".format(list_counter, list_id))
         return site_id, list_id
 
     def search_list(self, query):
