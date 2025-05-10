@@ -92,7 +92,10 @@ class WriteToSharePointListTool(BaseAgentTool):
         trace.span["name"] = "WRITE_TO_SHAREPOINT_LIST_TOOL_CALL"
         trace.inputs["list"] = self.list_id
         trace.inputs["row"] = row
-        trace.attributes["config"] = self.config
+        trace.attributes["config"] = {
+            "sharepoint_connection_name": self.config.get("sharepoint_connection"),
+            "sharepoint_connection_url": self.config.get("sharepoint_url")
+        }
 
         logger.info("writing row")
         sharepoint_writer.write_row(row)
