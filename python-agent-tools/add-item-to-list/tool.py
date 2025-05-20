@@ -43,16 +43,13 @@ class WriteToSharePointListTool(BaseAgentTool):
     def _get_schema_and_properties(self):
         output_columns = []
         properties = {}
-        required = []
         for sharepoint_column in self.list.get_columns():
-            column_description = sharepoint_column.get("description")
             column_description = sharepoint_column.get("description")
             if column_description:
                 properties[sharepoint_column.get("name")] = {
                     "type": "string",  # we don't have access to that information
-                    "name": sharepoint_column.get("name")
+                    "description": column_description
                 }
-                required.append(sharepoint_column.get("name"))  # For now...
                 output_columns.append({
                     "type": "string",  # we don't have access to that information
                     "name": sharepoint_column.get("name")
