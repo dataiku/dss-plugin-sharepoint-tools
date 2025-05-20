@@ -82,6 +82,8 @@ class Office365Session():
         kwargs["headers"] = kwargs.get("headers", {})
         kwargs["headers"].update(DSSConstants.JSON_HEADERS)
         kwargs["headers"].update(DSSConstants.GZIP_HEADERS)
+        if "$filter" in kwargs.get("params", {}):
+            kwargs["headers"].update({"Prefer": "HonorNonIndexedQueriesWarningMayFailRandomly"})
         is_first_get = True
         next_page_url = None
         while next_page_url or is_first_get:
@@ -308,7 +310,7 @@ class Office365Session():
         if len(value) > 0:
             hits_containers = value[0].get("hitsContainers", [])
             if len(hits_containers) > 0:
-                hits = hits_containers.get("hits", [])
+                hits = hits_containers[0].get("hits", [])
                 return hits
         return []
 

@@ -22,11 +22,14 @@ class Office365List(object):
         )
         return url
 
-    def get_next_row(self):
+    def get_next_row(self, filter={}):
+        params = {"expand": "field"}
+        if filter:
+            params.update({"$filter": filter})
         url = self.get_next_list_row_url()
         for row in self.session.get_next_item(
             url=url,
-            params={"expand": "field"},
+            params=params,
             force_no_batch=True
         ):
             yield row

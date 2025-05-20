@@ -1,0 +1,20 @@
+{
+    "id": "search-sharepoint-list",
+    "meta": {
+        "icon": "dku-icon-microsoft-sharepoint",
+        "label": "Search a SharePoint Online list"
+    },
+    
+    "params" : [
+        {
+            "name": "sharepoint_connection",
+            "label": "SharePoint connection",
+            "type": "CONNECTION"
+        },
+        {
+            "name": "sharepoint_url",
+            "label": "SharePoint URL",
+            "type": "STRING"
+        }
+    ]
+}
