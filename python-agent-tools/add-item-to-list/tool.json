@@ -1,7 +1,7 @@
 {
     "id": "write-sharepoint-list",
     "meta": {
-        "icon": "dku-icon-microsoft-sharepoint-20",
+        "icon": "dku-icon-microsoft-sharepoint",
         "label": "Create SharePoint List Item",
         "description": "Create a SharePoint Online List Item based on user input"
     },
