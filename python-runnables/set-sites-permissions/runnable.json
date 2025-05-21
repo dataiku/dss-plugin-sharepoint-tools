@@ -1,0 +1,41 @@
+{
+    "meta": {
+        "label": "Set Sites.Select permissions",
+        "description": "",
+        "icon": "dku-icon-microsoft-sharepoint"
+    },
+    "impersonate": false,
+    "params": [
+        {
+            "name": "sharepoint_connection",
+            "label": "SharePoint connection",
+            "type": "CONNECTION"
+        },
+        {
+            "name": "sharepoint_url",
+            "label": "SharePoint URL",
+            "type": "STRING"
+        },
+        {
+            "name": "roles",
+            "label": "Roles",
+            "type": "MULTISELECT",
+            "selectChoices": [
+                {"value":"read", "label":"Read"},
+                {"value":"write", "label":"Write"},
+                {"value":"manage", "label":"Manage"},
+                {"value":"fullcontrol", "label":"Full control"}
+            ]
+        }
+    ],
+    "permissions": [],
+    "resultType": "HTML",
+    "resultLabel": "my production",
+    "extension": "txt",
+    "mimeType": "text/plain",
+    "macroRoles": [
+        {
+            "type": "PROJECT_MACROS"
+        }
+    ]
+}
